@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Book from './Book.js'
 
 class BookShelf extends Component {
     
     render(){
+        
+        var { books, onChangeShelf } = this.props
+        var showingBooks = books
+        
         return (
          <div className="list-books">
             <div className="list-books-title">
@@ -15,6 +20,14 @@ class BookShelf extends Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
+                        
+                        <ol className="books-grid">
+                            {showingBooks.map((book) => ( 
+                              <li key={book.id}>
+                                    <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
+                              </li>
+                            ))}
+                        </ol>
                       
                     </ol>
                   </div>

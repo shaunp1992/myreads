@@ -16,7 +16,7 @@ class SearchBooks extends Component {
     render(){
         
         var showingBooks
-        var { books } = this.props
+        var { books, onChangeShelf } = this.props
         var { query }= this.state
         
         if(query){
@@ -39,7 +39,7 @@ class SearchBooks extends Component {
                     <ol className="books-grid">
                         {showingBooks.map((book) => ( 
                           <li key={book.id}>
-                                <Book book={book}></Book>
+                                <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
                           </li>
                         ))}
                     </ol>

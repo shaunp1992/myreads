@@ -7,9 +7,10 @@ import BookShelf from './BookShelf.js'
 
 
 class BooksApp extends React.Component {
+    
   state = {
     books : [],
-    showSearchPage: true,
+    showSearchPage: true
   }
   
    componentDidMount() {
@@ -17,27 +18,29 @@ class BooksApp extends React.Component {
             this.setState({ books })
         })   
     }
-
+    
+    changeShelf = (book, newShelf) => {
+        book.shelf = newShelf;
+        BooksAPI.update(book, newShelf).then(
+         this.setState(state => ({
+           books: state.books.filter(b => b.id !== book.id).concat([book])
+         }))
+       );        
+    }
     
 
   render() {
 
     return (
       <div className="app">
-        
          <Route exact path='/' render={() => (
-              <BookShelf></BookShelf>
+              <BookShelf books={this.state.books} onChangeShelf={this.changeShelf}></BookShelf>
             )}>
         </Route>    
-        
         <Route path='/search' render={( {history} ) => (
-                <SearchBooks books={this.state.books}></SearchBooks>
+                <SearchBooks books={this.state.books} onChangeShelf={this.changeShelf}></SearchBooks>
             )}>
         </Route>    
-            
-        
-       
-
       </div>
     )
   }
