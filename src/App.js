@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, View } from 'react';
 import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks.js'
 import BookShelf from './BookShelf.js'
+
 
 class BooksApp extends React.Component {
   state = {
@@ -30,7 +31,7 @@ class BooksApp extends React.Component {
         </Route>    
         
         <Route path='/search' render={( {history} ) => (
-              <SearchBooks books={this.state.books}></SearchBooks>
+                <SearchBooks books={this.state.books}></SearchBooks>
             )}>
         </Route>    
             

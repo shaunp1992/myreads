@@ -134,6 +134,9 @@ body, .app {
   list-style: none;
   padding: 0;
 }
+.book-authors li {
+    padding: 0;
+}
 .book-author {
     padding: 0;
 }
