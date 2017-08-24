@@ -113,6 +113,10 @@ body, .app {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: flex-start;
 }
 .books-grid li {
   padding: 10px 15px;

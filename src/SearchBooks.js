@@ -1,43 +1,56 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 import Book from './Book.js'
+import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
     
     state = {
         query: '',
+        searchResults: [],  
     }
         
-    updateQuery = (query => {
-        this.setState({query: query})
-    })
+    updateSearch(query, books) {
+        this.setState({ query: query})
+        
+        if(query){ 
+            BooksAPI.search(query, 20).then((searchResults) => {
+                if(!searchResults.error){
+                   this.setState({ 
+                       searchResults
+                    })
+                }
+                else{
+                     this.setState({ searchResults : []})
+                }
+            })   
+        }
+        else{
+            this.setState({ searchResults : []})
+        }
+    }
+    
     
     render(){
         
-        var showingBooks
-        var { books, onChangeShelf } = this.props
-        var { query }= this.state
+        var { searchResults, query }= this.state
+        var { onChangeShelf, books } = this.props
         
-        if(query){
-            var match = new RegExp(escapeRegExp(query), 'i')
-            showingBooks = books.filter((book) => match.test(book.title) || match.test(book.authors))
-        }
-        else{
-            showingBooks = books
-        }
+        searchResults.sort(sortBy('title'))
         
         return (
             <div className="search-books">
                 <div className="search-books-bar">
                       <Link to="/" className="close-search">Close</Link>
                       <div className="search-books-input-wrapper">
-                          <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
+                          <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateSearch(event.target.value, books)}/>
                       </div>
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {showingBooks.map((book) => ( 
+                        {searchResults.map((book) => ( 
                           <li key={book.id}>
                                 <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
                           </li>

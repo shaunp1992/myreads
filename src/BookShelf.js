@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import sortBy from 'sort-by'
 import Book from './Book.js'
 
 class BookShelf extends Component {
@@ -8,6 +9,7 @@ class BookShelf extends Component {
         
         var { books, onChangeShelf } = this.props
         var showingBooks = books
+        showingBooks.sort(sortBy('title'))
         
         return (
          <div className="list-books">

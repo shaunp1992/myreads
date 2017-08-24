@@ -9,8 +9,7 @@ import BookShelf from './BookShelf.js'
 class BooksApp extends React.Component {
     
   state = {
-    books : [],
-    showSearchPage: true
+    books : [], 
   }
   
    componentDidMount() {
@@ -26,11 +25,10 @@ class BooksApp extends React.Component {
            books: state.books.filter(b => b.id !== book.id).concat([book])
          }))
        );        
-    }
-    
+    }    
 
   render() {
-
+      
     return (
       <div className="app">
          <Route exact path='/' render={() => (
