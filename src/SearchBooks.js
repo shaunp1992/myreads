@@ -9,7 +9,7 @@ class SearchBooks extends Component {
     
     state = {
         query: '',
-        searchResults: [],  
+        searchResults: []
     }
         
     updateSearch(query, books) {
@@ -19,7 +19,14 @@ class SearchBooks extends Component {
             BooksAPI.search(query, 20).then((searchResults) => {
                 if(!searchResults.error){
                    this.setState({ 
-                       searchResults
+                       searchResults: searchResults.map(searchedBook => {
+                           books.filter( book => {
+                               if(searchedBook.id === book.id){
+                                  searchedBook.shelf = book.shelf 
+                                }
+                           })
+                           return searchedBook
+                       })
                     })
                 }
                 else{
@@ -31,8 +38,7 @@ class SearchBooks extends Component {
             this.setState({ searchResults : []})
         }
     }
-    
-    
+
     render(){
         
         var { searchResults, query }= this.state
