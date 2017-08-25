@@ -8,8 +8,13 @@ class BookShelf extends Component {
     render(){
         
         var { books, onChangeShelf } = this.props
-        var showingBooks = books
-        showingBooks.sort(sortBy('title'))
+        var reading = books.filter(book => book.shelf === "currentlyReading")
+        var wantTo = books.filter(book => book.shelf === "wantToRead")
+        var read = books.filter(book => book.shelf === "read")
+        
+        reading.sort(sortBy('title'))
+        wantTo.sort(sortBy('title'))
+        read.sort(sortBy('title'))
         
         return (
          <div className="list-books">
@@ -22,15 +27,11 @@ class BookShelf extends Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                        
-                        <ol className="books-grid">
-                            {showingBooks.map((book) => ( 
-                              <li key={book.id}>
-                                    <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
-                              </li>
-                            ))}
-                        </ol>
-                      
+                        {reading.map((book) => (
+                          <li key={book.id}>
+                                <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
+                          </li>
+                        ))}
                     </ol>
                   </div>
                 </div>
@@ -38,7 +39,11 @@ class BookShelf extends Component {
                   <h2 className="bookshelf-title">Want to Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      
+                        {wantTo.map((book) => (
+                              <li key={book.id}>
+                                    <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
+                              </li>
+                        ))}
                     </ol>
                   </div>
                 </div>
@@ -46,7 +51,11 @@ class BookShelf extends Component {
                   <h2 className="bookshelf-title">Read</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      
+                      {read.map((book) => (
+                              <li key={book.id}>
+                                    <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
+                              </li>
+                        ))}
                     </ol>
                   </div>
                 </div>

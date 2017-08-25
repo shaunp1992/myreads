@@ -6,8 +6,12 @@ class Book extends Component {
         
     }
     
+    convertCamelCase = (shelf) => {
+        return shelf.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase();})
+    }    
+    
     render(){
-        var { book, onChangeShelf } = this.props
+        var { book, onChangeShelf, inSearchView, getShelfText } = this.props
 
         return (
             <div className="book">
@@ -28,7 +32,9 @@ class Book extends Component {
                             <li key={index} className="book-author">{author}</li>
                     )) : null}
                   </ul> 
-                <div>{this.props.book.shelf}</div>
+                <div className="user-book-data">
+                    {inSearchView && book.shelf ? <div className="book-shelf">{this.convertCamelCase(book.shelf)}</div>:null}
+                </div>
             </div>
         )
     }
