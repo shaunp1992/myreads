@@ -7,10 +7,10 @@ class BookShelf extends Component {
     
     render(){
         
-        var { books, onChangeShelf } = this.props
+        var { books, onChangeShelf, onChangeRating } = this.props
+        var read = books.filter(book => book.shelf === "read")
         var reading = books.filter(book => book.shelf === "currentlyReading")
         var wantTo = books.filter(book => book.shelf === "wantToRead")
-        var read = books.filter(book => book.shelf === "read")
         
         reading.sort(sortBy('title'))
         wantTo.sort(sortBy('title'))
@@ -23,6 +23,18 @@ class BookShelf extends Component {
             </div>
             <div className="list-books-content">
               <div>
+                 <div className="bookshelf">
+                  <h2 className="bookshelf-title">Read</h2>
+                  <div className="bookshelf-books">
+                    <ol className="books-grid">
+                      {read.map((book) => (
+                              <li key={book.id}>
+                                    <Book book={book} onChangeShelf={this.props.onChangeShelf} onChangeRating={this.props.onChangeRating} ></Book>
+                              </li>
+                        ))}
+                    </ol>
+                  </div>
+                </div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
@@ -40,18 +52,6 @@ class BookShelf extends Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                         {wantTo.map((book) => (
-                              <li key={book.id}>
-                                    <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
-                              </li>
-                        ))}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {read.map((book) => (
                               <li key={book.id}>
                                     <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
                               </li>

@@ -10,8 +10,10 @@ class Book extends Component {
         return shelf.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase();})
     }    
     
+    
+    
     render(){
-        var { book, onChangeShelf, showShelf, getShelfText } = this.props
+        var { book, onChangeShelf, onChangeRating, showShelf, getShelfText } = this.props
 
         return (
             <div className="book">
@@ -35,6 +37,31 @@ class Book extends Component {
                   </ul> 
                 <div className="user-book-data">
                     {showShelf && book.shelf ? <div className="book-shelf">{this.convertCamelCase(book.shelf)}</div>:null}
+                    {book.shelf === "read" ? <div className="book-rating">
+                        <fieldset id={"book-rating-" + book.id}>
+                            <input type="radio" name={"book-star-" + book.id} 
+                                onChange={(e) => onChangeRating(book, e.target.value)} value="1" 
+                                checked={this.props.book.rating === "1"? true : false}
+                            />
+                            <input type="radio" name={"book-star-" + book.id} 
+                                onChange={(e) => onChangeRating(book, e.target.value)} value="2" 
+                                checked={this.props.book.rating === "2"? true : false}
+                            />
+                            <input type="radio" name={"book-star-" + book.id} 
+                                onChange={(e) => onChangeRating(book, e.target.value)} value="3" 
+                                checked={this.props.book.rating === "3"? true : false}
+                            />
+                            <input type="radio" name={"book-star-" + book.id} 
+                                onChange={(e) => onChangeRating(book, e.target.value)} value="4" 
+                                checked={this.props.book.rating === "4"? true : false}
+                            />
+                            <input type="radio" name={"book-star-" + book.id} 
+                                onChange={(e) => onChangeRating(book, e.target.value)} value="5" 
+                                checked={this.props.book.rating === "5"? true : false}
+                            />
+                        </fieldset>
+                    </div>: null}
+                    
                 </div>
             </div>
         )
