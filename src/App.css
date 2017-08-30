@@ -5,20 +5,22 @@ body {
   line-height: 1.5;
 }
 body, .app {
-  background: white;
+  background: rgb(247, 247, 247);
+    
 }
 
 /* main page */
 
 .list-books-title {
-  padding: 10px 0;
-  background: #2e7c31;
-  text-align: center;
+    padding: 5px 15px;
+    background: rgb(247, 247, 247);
+    text-align: center;
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  color: rgb(111, 111, 111);
+  text-align: left;
 }
 
 .list-books-content {
@@ -38,6 +40,7 @@ body, .app {
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
+  color: rgb(2, 155, 229);
 }
 .bookshelf-books {
   text-align: center;
@@ -53,7 +56,7 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: rgb(2, 155, 229);
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -118,13 +121,20 @@ body, .app {
   margin-right: auto;
   justify-content: flex-start;
 }
-.books-grid li {
-  padding: 10px 15px;
+.books-grid > li {
+  padding: 0;
   text-align: left;
+  background: white;
+  margin: 10px 15px;
 }
 
 .book {
-  width: 140px;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 3px 6px rgba(189, 189, 189, 0.16), 0 3px 6px rgba(232, 232, 232, 0.23);
+  padding: 10px;
 }
 .book-title,
 .book-authors {
@@ -132,11 +142,16 @@ body, .app {
 }
 .book-title {
   margin-top: 10px;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .book-authors {
   color: #999;
   list-style: none;
   padding: 0;
+  margin-top: 5px;
 }
 .book-authors li {
     padding: 0;
@@ -144,21 +159,32 @@ body, .app {
 .book-author {
     padding: 0;
 }
+
+
+
 .book-top {
   position: relative;
-  height: 200px;
+  height: 190px;
   display: flex;
   align-items: flex-end;
 }
 
+.book-bottom {
+    padding: 5px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .book-shelf-changer {
   position: absolute;
-  right: 0;
+  right: -10px;
   bottom: -10px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: rgb(2, 155, 229);
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -175,11 +201,61 @@ body, .app {
 /* book cover */
 
 .book-cover {
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  background-size: cover;
+  background-position: 50%;
 }
 .book-cover-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+.user-book-data{
+    margin-top: 5px;
+}
+/* ratings */
+
+.book-rating {
+  font-family: 'FontAwesome';
+  border: none;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.book-rating > input {
+    display: none
+}
+
+.book-rating:not(:checked) > label {
+  width: 1em;
+  padding: 0 .05em;
+  cursor: pointer;
+  color: #ffd830;
+  margin-right: 2px;
+}
+
+.book-rating:not(:checked) > label:before {
+  content: '\f006  ';
+}
+
+.book-rating:not(:checked) > label:hover,
+.book-rating:not(:checked) > label:hover ~ label {
+  color: #ffe471;
+  text-shadow: 0 0 3px #ffd830;
+}
+
+.book-rating:not(:checked) > label:hover:before,
+.book-rating:not(:checked) > label:hover ~ label:before {
+  content: '\f005  ';
+}
+
+.book-rating > input:checked ~ label:before {
+  content: '\f005  ';
+}
+
+.book-rating > label:active {
+  position: relative;
+  top: 2px;
 }
