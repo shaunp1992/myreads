@@ -3,24 +3,51 @@ import { Link } from 'react-router-dom'
 import sortBy from 'sort-by'
 import Book from './Book.js'
 
+
 class BookShelf extends Component {
     
+    state ={
+        sort : 'title'
+    }
+    
+    onChangeSortOrder(sortOption) {
+         this.setState({ 
+             sort: sortOption 
+         })
+    }
+
     render(){
         
+        var { sort } = this.state
         var { books, onChangeShelf, onChangeRating } = this.props
+        
         var read = books.filter(book => book.shelf === "read")
         var reading = books.filter(book => book.shelf === "currentlyReading")
         var wantTo = books.filter(book => book.shelf === "wantToRead")
         
-        reading.sort(sortBy('title'))
-        wantTo.sort(sortBy('title'))
-        read.sort(sortBy('title'))
+        reading.sort(sortBy(sort))
+        wantTo.sort(sortBy(sort))
+        read.sort(sortBy(sort))
         
+        var options = [
+          { value: 'title', label: 'Title' },
+          { value: 'authors', label: 'Author' }
+        ];
+
         return (
          <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
+            
+            <div className="bookshelf-controls">
+                <select value={sort} onChange={(e) => this.onChangeSortOrder(e.target.value)}>
+                        <option value="title">Title</option>
+                        <option value="authors">Author/s</option>
+                        <option value="rating">Rating</option>
+                </select>
+            </div>    
+                
             <div className="list-books-content">
               <div>
                  <div className="bookshelf">
