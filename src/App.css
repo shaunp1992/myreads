@@ -12,7 +12,7 @@ body, .app {
 /* main page */
 
 .list-books-title {
-    padding: 10px 30px;
+    padding: 10px 175px;
     background: rgb(247, 247, 247);
     text-align: center;
 }
@@ -268,12 +268,31 @@ body, .app {
     display: flex;
     justify-content: space-between;
     background: white;
-    padding: 10px 175px;
+    padding: 6px 175px 0;
 }
 
 /*Tabs*/
 .bookshelf-tab-controls {
     display: flex;
+    align-items: center;
+    line-height: 26px;
+}
+
+
+.shelf-tab {
+    padding: 0 5px;
+    margin: 0 15px 0 0;
+    text-align: center;
+    cursor: pointer;
+    color: #737373;
+}
+
+hr {
+  height: .25rem;
+  margin: 0;
+  background: #029be5;
+  border: none;
+  transition: .2s ease-in-out;
 }
 
 /*Sorting */
@@ -284,6 +303,7 @@ body, .app {
     overflow: hidden;
     width: 100px;
     padding: 3px 10px;
+    height: 26px;
 }
 
 .bookshelf-sorting-controls select:focus {
@@ -299,5 +319,6 @@ body, .app {
     font-weight: 400;
      width: 120px;
     cursor: pointer;
+    display: flex;
   }
 
