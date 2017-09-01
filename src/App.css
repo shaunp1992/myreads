@@ -12,7 +12,7 @@ body, .app {
 /* main page */
 
 .list-books-title {
-    padding: 5px 15px;
+    padding: 10px 30px;
     background: rgb(247, 247, 247);
     text-align: center;
 }
@@ -21,26 +21,30 @@ body, .app {
   margin: 0;
   color: rgb(111, 111, 111);
   text-align: left;
+  font-size: 28px;
 }
 
 .list-books-content {
-  padding: 0 0 80px;
+  padding: 0 150px 80px;
   flex: 1;
 }
 
 .bookshelf {
-  padding: 0 10px 20px;
+  padding: 0 0px 15px;
 }
 
 @media (min-width: 600px) {
   .bookshelf {
-    padding: 0 20px 40px;
+   padding: 0 0px 15px;
   }
 }
 
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
-  color: rgb(2, 155, 229);
+    color: rgb(2, 155, 229);
+    font-weight: 300;
+    margin: 20px 25px;
+    margin-bottom: 5px;
 }
 .bookshelf-books {
   text-align: center;
@@ -116,7 +120,6 @@ body, .app {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   justify-content: flex-start;
@@ -259,3 +262,42 @@ body, .app {
   position: relative;
   top: 2px;
 }
+
+/*Shelf Controls */
+.bookshelf-control-bar {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 10px 175px;
+}
+
+/*Tabs*/
+.bookshelf-tab-controls {
+    display: flex;
+}
+
+/*Sorting */
+.bookshelf-sorting-controls {
+    background: transparent url(http://cdn.myfonts.net/s/images/iconsets/myfonts/header_menu_arrow.png) no-repeat right center;
+    border-left: 1px solid #d6d6d6;
+    display: block;
+    overflow: hidden;
+    width: 100px;
+    padding: 3px 10px;
+}
+
+.bookshelf-sorting-controls select:focus {
+ outline:none;
+}
+
+.bookshelf-sorting-controls select {
+   background: transparent;
+    border: none;
+    color: #737373;
+    padding-right: 20px;
+    font-size: 14px;
+    font-weight: 400;
+     width: 120px;
+    cursor: pointer;
+  }
+
