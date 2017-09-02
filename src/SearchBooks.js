@@ -47,15 +47,24 @@ class SearchBooks extends Component {
         searchResults.sort(sortBy('title'))
         
         return (
+            
             <div className="search-books">
-                <div className="search-books-bar">
-                      <Link to="/" className="close-search">Close</Link>
-                      <div className="search-books-input-wrapper">
+                 <div className="list-books-title">
+                    <h1>Add Book</h1>
+                     <div className="search-books-input-wrapper">
                           <input type="text" placeholder="Search by title or author" value={query} onChange={(event) => this.updateSearch(event.target.value, books)}/>
+                         <div className="search-button" ><span className="search-icon"></span></div>
                       </div>
                 </div>
+                
+                <div className="search-books-bar">
+                    <div className="search-books-bar-inner">
+                      <Link to="/" className="close-search">Close</Link>
+                      
+                    </div>
+                </div>
                 <div className="search-books-results">
-                    <ol className="books-grid lads">
+                    <ol className="books-grid">
                         {searchResults.map((book) => ( 
                           <li key={book.id}>
                                 <Book book={book} onChangeShelf={this.props.onChangeShelf} showShelf={true}></Book>
