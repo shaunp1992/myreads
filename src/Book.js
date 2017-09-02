@@ -10,10 +10,8 @@ class Book extends Component {
         return shelf.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase();})
     }    
     
-    
-    
     render(){
-        var { book, onChangeShelf, onChangeRating, showShelf, getShelfText } = this.props
+        var { book, onChangeShelf, onChangeRating, getShelfText, showShelf, showRating } = this.props
 
         return (
             <div className="book">
@@ -22,7 +20,7 @@ class Book extends Component {
                     <div className="book-shelf-changer">
                       <select value={this.props.book.shelf ? this.props.book.shelf : "move"}  onChange={(e) => onChangeShelf(book, e.target.value)}>
                         <option value="move" disabled>Move to...</option>
-                        <option value="currentlyReading">Currently Reading</option>
+                        <option value="reading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>
                         { book.shelf ? <option value="none">Remove</option> : null}
@@ -42,7 +40,7 @@ class Book extends Component {
                      
                     <div className="user-book-data">
                         {showShelf && book.shelf ? <div className="book-shelf">{this.convertCamelCase(book.shelf)}</div>:null}
-                        {book.shelf === "read" ? 
+                        {showRating && book.shelf === "read" ? 
                             <div id={"book-rating-" + book.id} className="book-rating ">
                                 <input type="radio" name={"book-star-" + book.id} 
                                     onChange={(e) => onChangeRating(book, e.target.value)} value="5" id={"star-5-" + book.id}  

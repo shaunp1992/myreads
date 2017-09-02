@@ -98,7 +98,7 @@ class BookShelf extends Component {
                             <ol className="books-grid">
                               {read.map((book) => (
                                       <li key={book.id}>
-                                            <Book book={book} onChangeShelf={this.props.onChangeShelf} onChangeRating={this.props.onChangeRating} ></Book>
+                                            <Book book={book} onChangeShelf={this.props.onChangeShelf} onChangeRating={this.props.onChangeRating} showRating={true} ></Book>
                                       </li>
                                 ))}
                             </ol>
@@ -109,7 +109,7 @@ class BookShelf extends Component {
                   
                  {visibleShelf === 'currentlyReading' || visibleShelf === 'all' ? 
                       <div className="bookshelf">
-                          <h2 className="bookshelf-title">Currently Reading</h2>
+                          <h2 className="bookshelf-title">Reading</h2>
                           <div className="bookshelf-books">
                             <ol className="books-grid">
                                 {reading.map((book) => (

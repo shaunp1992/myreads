@@ -73,7 +73,6 @@ body, .app {
 /* search page */
 
 .search-books-bar {
-  position: fixed;
   width: 100%;
   top: 62px;
   left: 0;
@@ -153,7 +152,7 @@ body, .app {
 }
 
 .search-books-results {
-  padding: 80px 160px 20px;
+  padding: 30px 160px 20px;
 }
 
 /* books grid */
@@ -178,6 +177,7 @@ body, .app {
 }
 
 .book {
+    position: relative;
   width: 150px;
   height: 100%;
   display: flex;
@@ -209,6 +209,27 @@ body, .app {
     padding: 0;
 }
 
+.user-book-data {
+    font-size: 12px;
+    color: #029be5;
+    text-align: left;
+}
+
+
+.user-book-data .book-shelf{
+   font-size: 11px;
+    line-height: 22px;
+    color: white;
+    text-align: left;
+    background: #029be5;
+    padding: 0px 15px 0 10px;
+    overflow: hidden;
+    border-radius: 0px 0px 5px 0px;
+    position: absolute;
+    top: 6px;
+    left: 0px;
+    box-shadow: 1px 0px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
 
 
 .book-top {
