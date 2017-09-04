@@ -1,6 +1,5 @@
-# MyReads React App
-This is my myreads project for Udacity Nanodegree program
 
+# MyReads React App
 The app has been deployed on Heroku here [MyReads Heroku App](https://shaunpearce-myreads.herokuapp.com/). 
 
 ## To Install and Launch
