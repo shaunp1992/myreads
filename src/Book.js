@@ -11,7 +11,7 @@ class Book extends Component {
     }    
     
     render(){
-        var { book, onChangeShelf, onChangeRating, getShelfText, showShelf, showRating } = this.props
+        var { book, onChangeShelf, onChangeRating, getShelfText, showShelf, showRating, showBuyButton } = this.props
 
         return (
             <div className="book">
@@ -72,6 +72,11 @@ class Book extends Component {
                                 />
                                 <label htmlFor={"star-1-" + book.id}></label>
                             </div>: null}
+                        {showBuyButton && 
+                            <div className="book-buy-button-container">
+                                <a className="book-buy-button" href={book.infoLink}>Buy</a>
+                            </div>
+                        }
 
                     </div>
                 </div>

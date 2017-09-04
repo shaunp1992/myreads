@@ -330,6 +330,22 @@ body, .app {
   top: 2px;
 }
 
+/*Buy Button */
+.book-buy-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0px;
+}
+
+.book-buy-button {
+    text-decoration: none;
+    background: #029be5;
+    padding: 2px 10px;
+    color: white;
+    border-radius: 2px;
+    font-size: 10px;
+}
+
 /*Shelf Controls */
 .bookshelf-control-bar {
     display: flex;
