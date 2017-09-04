@@ -1,6 +1,5 @@
-import React, { Component, View } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks.js'
@@ -9,16 +8,16 @@ import BookShelf from './BookShelf.js'
 
 class BooksApp extends React.Component {
          
-  state = {
-    books : [], 
-  }
-  
-   componentDidMount() {
+    state = {
+     books : [], 
+    }
+
+    componentDidMount() {
         BooksAPI.getAll().then((books) => {
             this.setState({ books })
         })   
     }
-    
+
     changeShelf = (book, newShelf) => {
         book.shelf = newShelf;
         BooksAPI.update(book, newShelf).then(
@@ -27,7 +26,7 @@ class BooksApp extends React.Component {
          }))
        );        
     }  
-    
+
     changeRating = (book, rating) => {
        book.rating = rating;
        this.setState(state => ({

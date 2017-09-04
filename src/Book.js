@@ -3,25 +3,21 @@ import PropTypes from 'prop-types'
 
 class Book extends Component {
     
-   static propTypes ={
-       book: PropTypes.object.isRequired,
-       onChangeShelf: PropTypes.func.isRequired,
-       onChangeRating: PropTypes.func,
-       showShelf: PropTypes.bool,
-       showRating: PropTypes.bool,
-       showBuyButton: PropTypes.bool,
-   } 
-    
-    state = {
-        
-    }
-    
+    static propTypes ={
+        book: PropTypes.object.isRequired,
+        onChangeShelf: PropTypes.func.isRequired,
+        onChangeRating: PropTypes.func,
+        showShelf: PropTypes.bool,
+        showRating: PropTypes.bool,
+        showBuyButton: PropTypes.bool
+    } 
+
     convertCamelCase = (shelf) => {
         return shelf.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase();})
     }    
-    
+
     render(){
-        var { book, onChangeShelf, onChangeRating, getShelfText, showShelf, showRating, showBuyButton } = this.props
+        var { book, onChangeShelf, onChangeRating, showShelf, showRating, showBuyButton } = this.props
 
         return (
             <div className="book">
@@ -33,11 +29,11 @@ class Book extends Component {
                         <option value="reading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>
-                        { book.shelf ? <option value="none">Remove</option> : null}
+                        {book.shelf ? <option value="none">Remove</option> : null}
                       </select>
                     </div>
                 </div>
-               
+
                 <div className="book-bottom">
                     <div className="book-data">
                         <div className="book-title">{book.title}</div>
@@ -47,9 +43,12 @@ class Book extends Component {
                             )) : null}
                           </ul> 
                     </div>
-                     
                     <div className="user-book-data">
-                        {showShelf && book.shelf ? <div className="book-shelf">{this.convertCamelCase(book.shelf)}</div>:null}
+                        {showShelf && book.shelf ? 
+                            <div className="book-shelf">
+                                {this.convertCamelCase(book.shelf)}
+                            </div>:null
+                        }
                         {showRating && book.shelf === "read" ? 
                             <div id={"book-rating-" + book.id} className="book-rating ">
                                 <input type="radio" name={"book-star-" + book.id} 
@@ -81,13 +80,13 @@ class Book extends Component {
                                     checked={this.props.book.rating === "1"? true : false}
                                 />
                                 <label htmlFor={"star-1-" + book.id}></label>
-                            </div>: null}
+                            </div>: null
+                        }
                         {showBuyButton && 
                             <div className="book-buy-button-container">
                                 <a className="book-buy-button" href={book.infoLink} target="_blank">Buy</a>
                             </div>
                         }
-
                     </div>
                 </div>
             </div>

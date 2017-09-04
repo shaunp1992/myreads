@@ -29,7 +29,7 @@ class BookShelf extends Component {
     }
 
     setActiveTabUnderline(){
-        var activeWidth = $('.active-tab').outerWidth()
+       var activeWidth = $('.active-tab').outerWidth()
        document.getElementById("tab-underline").style.width = activeWidth + "px"     
        
        var activeLeft = ($(".active-tab" ).position().left) - 175
@@ -51,12 +51,10 @@ class BookShelf extends Component {
     render(){
         
         var { sort, visibleShelf } = this.state
-        var { books, onChangeShelf, onChangeRating, onChangeVisibleShelf } = this.props
-        
+        var { books, onChangeShelf, onChangeRating } = this.props
         var read = books.filter(book => book.shelf === "read")
         var reading = books.filter(book => book.shelf === "currentlyReading")
         var wantTo = books.filter(book => book.shelf === "wantToRead")
-        
         reading.sort(sortBy(sort))
         wantTo.sort(sortBy(sort))
         read.sort(sortBy(sort))
@@ -66,7 +64,6 @@ class BookShelf extends Component {
             <div className="list-books-title">
               <h1>My Reads</h1>
             </div>
-            
                 
             <div className="bookshelf-control-bar">
                 <div className="bookshelf-tab-controls-container">
@@ -90,57 +87,50 @@ class BookShelf extends Component {
                 </div>   
             </div>    
              
-                
             <div className="list-books-content">
               <div>
-                  
-                  {visibleShelf === 'read' || visibleShelf === 'all' ? 
-                      <div className="bookshelf">
-                        <h2 className="bookshelf-title">Read</h2>
-                          <div className="bookshelf-books">
-                            <ol className="books-grid">
-                              {read.map((book) => (
-                                      <li key={book.id}>
-                                            <Book book={book} onChangeShelf={this.props.onChangeShelf} onChangeRating={this.props.onChangeRating} showRating={true} ></Book>
-                                      </li>
-                                ))}
-                            </ol>
-                          </div>
-                        </div>:null
-                  }
-                  
-                  
-                 {visibleShelf === 'currentlyReading' || visibleShelf === 'all' ? 
-                      <div className="bookshelf">
-                          <h2 className="bookshelf-title">Reading</h2>
-                          <div className="bookshelf-books">
-                            <ol className="books-grid">
-                                {reading.map((book) => (
-                                  <li key={book.id}>
-                                        <Book book={book} onChangeShelf={this.props.onChangeShelf}></Book>
-                                  </li>
-                                ))}
-                            </ol>
-                           </div>
-                    </div>:null
-                 }
-                  
-                 {visibleShelf === 'wantToRead' || visibleShelf === 'all' ? 
-                    <div className="bookshelf">
-                      <h2 className="bookshelf-title">Want to Read</h2>
+                {visibleShelf === 'read' || visibleShelf === 'all' ? 
+                  <div className="bookshelf">
+                    <h2 className="bookshelf-title">Read</h2>
                       <div className="bookshelf-books">
                         <ol className="books-grid">
-                            {wantTo.map((book) => (
+                          {read.map((book) => (
                                   <li key={book.id}>
-                                        <Book book={book} onChangeShelf={this.props.onChangeShelf} showBuyButton={true}></Book>
+                                        <Book book={book} onChangeShelf={onChangeShelf} onChangeRating={onChangeRating} showRating={true} ></Book>
                                   </li>
                             ))}
                         </ol>
                       </div>
-                     </div>:null
-                 }
-                  
-                  
+                    </div>:null
+                }
+                {visibleShelf === 'currentlyReading' || visibleShelf === 'all' ? 
+                  <div className="bookshelf">
+                      <h2 className="bookshelf-title">Reading</h2>
+                      <div className="bookshelf-books">
+                        <ol className="books-grid">
+                            {reading.map((book) => (
+                              <li key={book.id}>
+                                    <Book book={book} onChangeShelf={onChangeShelf}></Book>
+                              </li>
+                            ))}
+                        </ol>
+                       </div>
+                </div>:null
+                }
+                {visibleShelf === 'wantToRead' || visibleShelf === 'all' ? 
+                <div className="bookshelf">
+                  <h2 className="bookshelf-title">Want to Read</h2>
+                  <div className="bookshelf-books">
+                    <ol className="books-grid">
+                        {wantTo.map((book) => (
+                              <li key={book.id}>
+                                    <Book book={book} onChangeShelf={onChangeShelf} showBuyButton={true}></Book>
+                              </li>
+                        ))}
+                    </ol>
+                  </div>
+                 </div>:null
+                }
               </div>
             </div>
             <div className="open-search">

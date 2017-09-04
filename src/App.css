@@ -8,41 +8,35 @@ body, .app {
   background: #eeeeee;
     
 }
-
 /* main page */
-
 .list-books-title {
     padding: 10px 175px;
-    background: rgb(247, 247, 247);
+    background: #f7f7f7;
     text-align: center;
     display: flex;
 }
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: rgb(111, 111, 111);
+  color: #6f6f6f;
   text-align: left;
   font-size: 28px;
 }
-
 .list-books-content {
   padding: 0 150px 80px;
   flex: 1;
 }
-
 .bookshelf {
   padding: 0 0px 15px;
 }
-
 @media (min-width: 600px) {
   .bookshelf {
    padding: 0 0px 15px;
   }
 }
-
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
-    color: rgb(2, 155, 229);
+    color: #029be5;
     font-weight: 300;
     margin: 20px 25px;
     margin-bottom: 5px;
@@ -50,7 +44,6 @@ body, .app {
 .bookshelf-books {
   text-align: center;
 }
-
 .open-search {
   position: fixed;
   right: 25px;
@@ -61,7 +54,7 @@ body, .app {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgb(2, 155, 229);
+  background: #029be5;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -69,9 +62,7 @@ body, .app {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   font-size: 0;
 }
-
 /* search page */
-
 .search-books-bar {
   width: 100%;
   top: 62px;
@@ -80,13 +71,11 @@ body, .app {
   display: flex;
   background: white;
 }
-
 .search-books-bar-inner {
     display: flex;
     width: 100%;
     padding: 3px 175px;
 }
-
 .search-books-input-wrapper {
   flex: 1;
   display: flex;
@@ -94,7 +83,6 @@ body, .app {
   padding: 0 8px;
   margin-left: 50px;
 }
-
 .search-books-input-wrapper input{
     height: 32px;
     width: 450px;
@@ -104,29 +92,25 @@ body, .app {
     border-right-width: 0;
     font-size: 15px;
 }
-
 .search-books-input-wrapper input:focus{
     outline: none;
-    border-color: rgb(2, 155, 229);;
+    border-color: #029be5;;
 }
-
 .search-books-bar input {
   width: 100%;
   padding: 0px 10px;
   height: 30px;
   font-size: 1.25em;
   border: none;
-  outline: none;
-    
+  outline: none;   
 }
-
 .search-button {
     height: 32px;
-    background: rgb(2, 155, 229);
+    background: #029be5;
     width: 50px;
     border-radius: 0 2px 1px 0;
     height: 32px;
-    background: rgb(2, 155, 229);
+    background: #029be5;
     width: 50px;
     border-radius: 0 2px 1px 0;
     background-image: url(http://www.iconsdb.com/icons/preview/white/search-12-xxl.png);
@@ -135,14 +119,12 @@ body, .app {
     background-position: 50%;
     cursor: pointer;
 }
-
 .close-search {
   display: block;
   top: 20px;
   left: 0px;
   width: 20px;
   height: 30px;
-
   background: white;
   background-image: url('./icons/arrow-back.svg');
   background-position: center;
@@ -150,18 +132,14 @@ body, .app {
   background-size: 28px;
   font-size: 0;
 }
-
 .search-books-results {
   padding: 30px 160px 20px;
 }
-
 /* books grid */
-
 .books-grid {
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -175,9 +153,8 @@ body, .app {
   background: white;
   margin: 10px 15px;
 }
-
 .book {
-    position: relative;
+  position: relative;
   width: 150px;
   height: 100%;
   display: flex;
@@ -208,14 +185,11 @@ body, .app {
 .book-author {
     padding: 0;
 }
-
 .user-book-data {
     font-size: 12px;
     color: #029be5;
     text-align: left;
 }
-
-
 .user-book-data .book-shelf{
    font-size: 11px;
     line-height: 22px;
@@ -230,15 +204,12 @@ body, .app {
     left: 0px;
     box-shadow: 1px 0px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
-
-
 .book-top {
   position: relative;
   height: 190px;
   display: flex;
   align-items: flex-end;
 }
-
 .book-bottom {
     padding: 5px;
     flex: 1;
@@ -246,7 +217,6 @@ body, .app {
     flex-direction: column;
     justify-content: space-between;
 }
-
 .book-shelf-changer {
   position: absolute;
   right: -10px;
@@ -254,7 +224,7 @@ body, .app {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgb(2, 155, 229);
+  background: #029be5;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -267,9 +237,7 @@ body, .app {
   opacity: 0;
   cursor: pointer;
 }
-
 /* book cover */
-
 .book-cover {
   background: #eee;
   background-size: cover;
@@ -280,12 +248,10 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
-
 .user-book-data{
     margin-top: 5px;
 }
 /* ratings */
-
 .book-rating {
   font-family: 'FontAwesome';
   border: none;
@@ -293,11 +259,9 @@ body, .app {
   flex-direction: row-reverse;
   justify-content: flex-end;
 }
-
 .book-rating > input {
     display: none
 }
-
 .book-rating:not(:checked) > label {
   width: 1em;
   padding: 0 .05em;
@@ -305,38 +269,31 @@ body, .app {
   color: #ffd830;
   margin-right: 2px;
 }
-
 .book-rating:not(:checked) > label:before {
   content: '\f006  ';
 }
-
 .book-rating:not(:checked) > label:hover,
 .book-rating:not(:checked) > label:hover ~ label {
   color: #ffe471;
   text-shadow: 0 0 3px #ffd830;
 }
-
 .book-rating:not(:checked) > label:hover:before,
 .book-rating:not(:checked) > label:hover ~ label:before {
   content: '\f005  ';
 }
-
 .book-rating > input:checked ~ label:before {
   content: '\f005  ';
 }
-
 .book-rating > label:active {
   position: relative;
   top: 2px;
 }
-
 /*Buy Button */
 .book-buy-button-container {
     display: flex;
     justify-content: flex-end;
     margin-top: 0px;
 }
-
 .book-buy-button {
     text-decoration: none;
     background: #029be5;
@@ -345,7 +302,6 @@ body, .app {
     border-radius: 2px;
     font-size: 10px;
 }
-
 /*Shelf Controls */
 .bookshelf-control-bar {
     display: flex;
@@ -353,15 +309,12 @@ body, .app {
     background: white;
     padding: 6px 175px 0;
 }
-
 /*Tabs*/
 .bookshelf-tab-controls {
     display: flex;
     align-items: center;
     line-height: 26px;
 }
-
-
 .shelf-tab {
     padding: 0 5px;
     margin: 0 15px 0 0;
@@ -369,7 +322,6 @@ body, .app {
     cursor: pointer;
     color: #737373;
 }
-
 hr {
   height: .25rem;
   margin: 0;
@@ -377,7 +329,6 @@ hr {
   border: none;
   transition: .2s ease-in-out;
 }
-
 /*Sorting */
 .bookshelf-sorting-controls {
     background: transparent url(http://cdn.myfonts.net/s/images/iconsets/myfonts/header_menu_arrow.png) no-repeat right center;
@@ -388,11 +339,9 @@ hr {
     padding: 3px 10px;
     height: 26px;
 }
-
 .bookshelf-sorting-controls select:focus {
  outline:none;
 }
-
 .bookshelf-sorting-controls select {
    background: transparent;
     border: none;
@@ -403,5 +352,4 @@ hr {
      width: 120px;
     cursor: pointer;
     display: flex;
-  }
-
+}
