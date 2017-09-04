@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 import Book from './Book.js'
@@ -7,7 +8,12 @@ import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
     
-    state = {
+   static propTypes ={
+       books: PropTypes.array.isRequired,
+       onChangeShelf: PropTypes.func.isRequired,
+   } 
+    
+   state = {
         query: '',
         searchResults: []
     }

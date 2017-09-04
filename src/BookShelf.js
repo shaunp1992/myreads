@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import sortBy from 'sort-by'
 import Book from './Book.js'
 import $ from 'jquery';
 
 
 class BookShelf extends Component {
+    
+    static propTypes ={
+       books: PropTypes.array.isRequired,
+       onChangeShelf: PropTypes.func.isRequired,
+       onChangeRating: PropTypes.func,
+   } 
     
     state ={
         sort : 'title',
@@ -14,20 +21,19 @@ class BookShelf extends Component {
     }
     
     componentDidMount() {
-       var activeWidth = $('.active-tab').outerWidth()
-       document.getElementById("tab-underline").style.width = activeWidth + "px"     
-       
-       var activeLeft = ($(".active-tab" ).position().left) - 175
-       document.getElementById("tab-underline").style.marginLeft = activeLeft + "px"   
+       this.setActiveTabUnderline()  
     }
 
     componentDidUpdate() {
-       var activeWidth = $('.active-tab').outerWidth()
+       this.setActiveTabUnderline()      
+    }
+
+    setActiveTabUnderline(){
+        var activeWidth = $('.active-tab').outerWidth()
        document.getElementById("tab-underline").style.width = activeWidth + "px"     
        
        var activeLeft = ($(".active-tab" ).position().left) - 175
-       document.getElementById("tab-underline").style.marginLeft = activeLeft + "px"     
-       
+       document.getElementById("tab-underline").style.marginLeft = activeLeft + "px"  
     }
 
     onChangeSortOrder(sortOption) {
@@ -44,11 +50,8 @@ class BookShelf extends Component {
 
     render(){
         
-       // console.log("testing");
-        
-        
         var { sort, visibleShelf } = this.state
-        var { books, onChangeShelf, onChangeRating, onChangeVisibleShelf, onClicky } = this.props
+        var { books, onChangeShelf, onChangeRating, onChangeVisibleShelf } = this.props
         
         var read = books.filter(book => book.shelf === "read")
         var reading = books.filter(book => book.shelf === "currentlyReading")

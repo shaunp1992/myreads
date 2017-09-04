@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Book extends Component {
+    
+   static propTypes ={
+       book: PropTypes.object.isRequired,
+       onChangeShelf: PropTypes.func.isRequired,
+       onChangeRating: PropTypes.func,
+       showShelf: PropTypes.bool,
+       showRating: PropTypes.bool,
+       showBuyButton: PropTypes.bool,
+   } 
     
     state = {
         
@@ -74,7 +84,7 @@ class Book extends Component {
                             </div>: null}
                         {showBuyButton && 
                             <div className="book-buy-button-container">
-                                <a className="book-buy-button" href={book.infoLink}>Buy</a>
+                                <a className="book-buy-button" href={book.infoLink} target="_blank">Buy</a>
                             </div>
                         }
 

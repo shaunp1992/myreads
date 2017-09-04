@@ -1,5 +1,6 @@
 import React, { Component, View } from 'react';
 import { Route } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks.js'
@@ -7,7 +8,7 @@ import BookShelf from './BookShelf.js'
 
 
 class BooksApp extends React.Component {
-    
+         
   state = {
     books : [], 
   }
