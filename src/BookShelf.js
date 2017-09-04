@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Book from './Book.js'
 import $ from 'jquery';
-//import sortBy from 'sort-by'
+import sortBy from 'sort-by'
 
 class BookShelf extends Component {
     
@@ -54,9 +54,9 @@ class BookShelf extends Component {
         var read = books.filter(book => book.shelf === "read")
         var reading = books.filter(book => book.shelf === "currentlyReading")
         var wantTo = books.filter(book => book.shelf === "wantToRead")
-        //reading.sort(sortBy(sort))
-        //wantTo.sort(sortBy(sort))
-        //read.sort(sortBy(sort))
+        reading.sort(sortBy(sort))
+        wantTo.sort(sortBy(sort))
+        read.sort(sortBy(sort))
         
         return (
          <div className="list-books">
