@@ -11,7 +11,8 @@ class Book extends Component {
         showRating: PropTypes.bool,
         showBuyButton: PropTypes.bool
     } 
-
+    
+    //Used to convert the camel case shelf value to a normal string to display nicely on the UI
     convertCamelCase = (shelf) => {
         return shelf.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase();})
     }    
@@ -44,11 +45,13 @@ class Book extends Component {
                           </ul> 
                     </div>
                     <div className="user-book-data">
+                        {/* Shows users what shelf each book is on but only if it is assigned a shelf and the showShelf prop is on. This prop is on/true on the search page */}
                         {showShelf && book.shelf ? 
                             <div className="book-shelf">
                                 {this.convertCamelCase(book.shelf)}
                             </div>:null
                         }
+                        {/* Allows users to rate books, but only the ones they have read */}
                         {showRating && book.shelf === "read" ? 
                             <div id={"book-rating-" + book.id} className="book-rating ">
                                 <input type="radio" name={"book-star-" + book.id} 
@@ -82,6 +85,7 @@ class Book extends Component {
                                 <label htmlFor={"star-1-" + book.id}></label>
                             </div>: null
                         }
+                        {/* Adds a buy button if the showBuyButton prop is on/true which. This prop os only on books that are on the 'want to read' shelf as it is the only shelf that makes sense to show a buy button on. */}
                         {showBuyButton && 
                             <div className="book-buy-button-container">
                                 <a className="book-buy-button" href={book.infoLink} target="_blank">Buy</a>

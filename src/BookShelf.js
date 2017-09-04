@@ -16,7 +16,6 @@ class BookShelf extends Component {
     state ={
         sort : 'title',
         visibleShelf: 'all',
-        active: false
     }
     
     componentDidMount() {
@@ -27,6 +26,7 @@ class BookShelf extends Component {
        this.setActiveTabUnderline()      
     }
 
+    //Calculates active tab/shelf and adjusts the underline accordingly
     setActiveTabUnderline(){
        var activeWidth = $('.active-tab').outerWidth()
        document.getElementById("tab-underline").style.width = activeWidth + "px"     
@@ -35,17 +35,19 @@ class BookShelf extends Component {
        document.getElementById("tab-underline").style.marginLeft = activeLeft + "px"  
     }
 
-    onChangeSortOrder(sortOption) {
-         this.setState({ 
-             sort: sortOption 
-         })
-    }
-
+    //Allows users to change/filter what shelves are being viewed on the main page
     onChangeVisibleShelf (visibleShelfSelection){
         this.setState({ 
              visibleShelf: visibleShelfSelection,
          })
       }
+
+    //Allows users to sort their books by title, author/s or rating on each shelf
+    onChangeSortOrder(sortOption) {
+         this.setState({ 
+             sort: sortOption 
+         })
+    }
 
     render(){
         

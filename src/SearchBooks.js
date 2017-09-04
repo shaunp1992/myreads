@@ -27,6 +27,7 @@ class SearchBooks extends Component {
                 if(!searchResults.error){
                     this.setState({ 
                       searchResults: searchResults.map(searchedBook => {
+                          //Goes through each returned book from the search and replaces any book that is tracked/added to show
                           books.forEach( book => {
                               if(searchedBook.id === book.id){
                                  searchedBook = book 
@@ -36,11 +37,13 @@ class SearchBooks extends Component {
                       })
                    })
                 }
+                //Resets state if no results are found
                 else{
                      this.setState({ searchResults : []})
                 }
             })   
         }
+        //Resets state if no query is entered
         else{
             this.setState({ searchResults : []})
         }
